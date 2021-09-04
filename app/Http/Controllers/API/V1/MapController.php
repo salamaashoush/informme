@@ -1,13 +1,14 @@
 <?php
+namespace App\Http\Controllers\API\V1;
 
-namespace App\Http\Controllers;
 
+use App\Location;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-class PlacesController extends Controller
+class MapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,17 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        //
+        Mapper::map(31.205753,29.924526);
+
+        // Add information window for each address
+        $collection = Location::all();
+
+        $collection->each(function($address)
+        {
+            Mapper::marker($address->lat, $address->long,['eventClick' => '$("#editdetails").modal();']);
+        });
+
+        return view('admin.map.index');
     }
 
     /**
