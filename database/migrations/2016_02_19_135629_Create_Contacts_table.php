@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateContactsTable extends Migration
 {
@@ -13,13 +14,13 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('phone');
             $table->string('mobile');
             $table->string('fax');
             $table->string('email');
             $table->string('website');
-            $table->integer('div_id')->unsigned();
+            $table->bigInteger('div_id')->unsigned();
             $table->foreign('div_id')->references('id')->on('divisions');
             $table->string('adress_1');
             $table->string('adress_2');

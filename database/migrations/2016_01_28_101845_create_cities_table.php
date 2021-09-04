@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCitiesTable extends Migration
 {
@@ -13,12 +14,12 @@ class CreateCitiesTable extends Migration
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->decimal('area')->nullable();
-            $table->integer('gover_id')->unsigned();
+            $table->bigInteger('gover_id')->unsigned();
             $table->foreign('gover_id')->references('id')->on('governorates');
-            $table->integer('div_id')->unsigned();
+            $table->bigInteger('div_id')->unsigned();
             $table->foreign('div_id')->references('id')->on('divisions');
             $table->boolean('is_division')->nullable();
             $table->decimal('population')->nullable();

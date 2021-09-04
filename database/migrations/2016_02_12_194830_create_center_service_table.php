@@ -13,9 +13,9 @@ class CreateCenterServiceTable extends Migration
     public function up()
     {
         Schema::create('center_service', function (Blueprint $table) {
-            $table->integer('center_id')->unsigned();
+            $table->bigInteger('center_id')->unsigned();
             $table->foreign('center_id')->references('id')->on('centers');
-            $table->integer('service_id')->unsigned();
+            $table->bigInteger('service_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services');
         });
     }

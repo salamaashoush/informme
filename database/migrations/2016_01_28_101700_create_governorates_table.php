@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateGovernoratesTable extends Migration
 {
@@ -13,7 +14,7 @@ class CreateGovernoratesTable extends Migration
     public function up()
     {
         Schema::create('governorates', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->string('type');
             $table->string('capital')->nullable();

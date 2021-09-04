@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVillagesTable extends Migration
 {
@@ -13,12 +14,12 @@ class CreateVillagesTable extends Migration
     public function up()
     {
         Schema::create('villages', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->decimal('area')->nullable();
-            $table->integer('div_id')->unsigned();
+            $table->bigInteger('div_id')->unsigned();
             $table->foreign('div_id')->references('id')->on('divisions');
-            $table->integer('unit_id')->unsigned();
+            $table->bigInteger('unit_id')->unsigned();
             $table->foreign('unit_id')->references('id')->on('units');
             $table->decimal('population')->nullable();
             $table->text('description')->nullable();

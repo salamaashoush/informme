@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateHamletsTable extends Migration
 {
@@ -13,12 +14,12 @@ class CreateHamletsTable extends Migration
     public function up()
     {
         Schema::create('hamlets', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->decimal('area')->nullable();
-            $table->integer('div_id')->unsigned();
+            $table->bigInteger('div_id')->unsigned();
             $table->foreign('div_id')->references('id')->on('divisions');
-            $table->integer('vil_id')->unsigned();
+            $table->bigInteger('vil_id')->unsigned();
             $table->foreign('vil_id')->references('id')->on('villages');
             $table->decimal('population')->nullable();
             $table->text('description')->nullable();

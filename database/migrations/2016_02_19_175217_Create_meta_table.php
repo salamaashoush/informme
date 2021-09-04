@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMetaTable extends Migration
 {
@@ -13,7 +14,7 @@ class CreateMetaTable extends Migration
     public function up()
     {
         Schema::create('meta', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->integer('meatable_id');
             $table->string('metable_type');
             $table->string('key');
