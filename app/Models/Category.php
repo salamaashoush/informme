@@ -1,23 +1,29 @@
 <?php
+
 namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Category extends \Baum\Node
+// TODO: figure out if we need nested set model https://github.com/lazychaser/laravel-nestedset#installation
+class Category extends Model
 {
-    protected $fillable=['name','type'];
-    public function centers()
+    protected $fillable = ['name', 'type'];
+
+    public function centers(): HasMany
     {
-        return $this->hasMany('App\Center', 'cat_id');
+        return $this->hasMany(Center::class, 'cat_id');
     }
-    public function services()
+
+    public function services(): HasMany
     {
-        return $this->hasMany('App\Service', 'cat_id');
+        return $this->hasMany(Service::class, 'cat_id');
     }
-    public function places()
+
+    public function places(): HasMany
     {
-        return $this->hasMany('App\Place', 'cat_id');
+        return $this->hasMany(Place::class, 'cat_id');
     }
 
 }

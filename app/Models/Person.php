@@ -1,34 +1,43 @@
 <?php
+
 namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Person extends Model
 {
-    protected $fillable=['name','job','desciption','is_historical'];
+    protected $fillable = ['name', 'job', 'desciption', 'is_historical'];
 
-    public function location()
+    public function location(): MorphToMany
     {
-        return $this->morphToMany('App\Location', 'locationable');
+        return $this->morphToMany(Location::class, 'locationable');
     }
-    public function articles()
+
+    public function articles(): MorphMany
     {
-        return $this->morphMany('App\Article', 'articlable');
+        return $this->morphMany(Article::class, 'articlable');
     }
-    public function photos()
+
+    public function photos(): MorphMany
     {
-        return $this->morphMany('App\Photo', 'imageable');
+        return $this->morphMany(Photo::class, 'imageable');
     }
-    public function reviews()
+
+    public function reviews(): MorphMany
     {
-        return $this->morphMany('App\Photo', 'reviewable');
+        return $this->morphMany(Photo::class, 'reviewable');
     }
-    public function contact()
+
+    public function contact(): MorphMany
     {
-        return $this->morphMany('App\Contact', 'contactable');
+        return $this->morphMany(Contact::class, 'contactable');
     }
-    public function personable()
+
+    public function personable(): MorphTo
     {
         return $this->morphTo();
     }

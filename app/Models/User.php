@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -42,53 +44,59 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function location()
+
+    public function location(): MorphToMany
     {
-        return $this->morphToMany('App\Location', 'locationable');
-    }
-    public function articles()
-    {
-        return $this->morphMany('App\Article', 'articlable');
-    }
-    public function photos()
-    {
-        return $this->morphMany('App\Photo', 'imageable');
-    }
-    public function reviews()
-    {
-        return $this->morphMany('App\Review', 'reviewable');
-    }
-    public function contact()
-    {
-        return $this->morphMany('App\Contact', 'contactable');
-    }
-    public function meta()
-    {
-        return $this->morphMany('App\Meta', 'metable');
-    }
-    public function roles()
-    {
-        return $this->belongsToMany('App\Models\Role')->withTimestamps();
+        return $this->morphToMany(Location::class, 'locationable');
     }
 
-    public function hasRole($name)
+    public function articles(): MorphMany
     {
-        foreach($this->roles as $role)
-        {
-            if($role->name == $name) return true;
+        return $this->morphMany(Article::class, 'articlable');
+    }
+
+    public function photos(): MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
+    }
+
+    public function reviews(): MorphMany
+    {
+        return $this->morphMany(Review::class, 'reviewable');
+    }
+
+    public function contact(): MorphMany
+    {
+        return $this->morphMany(Contact::class, 'contactable');
+    }
+
+    public function meta(): MorphMany
+    {
+        return $this->morphMany(Meta::class, 'metable');
+    }
+
+    public function hasRole($name): bool
+    {
+        foreach ($this->roles() as $role) {
+            if ($role->name == $name) return true;
         }
 
         return false;
     }
 
-    public function assignRole($role)
+    public function roles(): BelongsToMany
     {
-        return $this->roles()->attach($role);
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
-    public function removeRole($role)
+    public function assignRole($role)
+    {
+        $this->roles()->attach($role);
+    }
+
+    public function removeRole($role): int
     {
         return $this->roles()->detach($role);
     }
-    
+
 }
