@@ -1,47 +1,61 @@
 <?php
+
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Governorate extends Model
 {
-    protected $fillable=['name','area','type','capital','population','p_density_rate','code','time_zone','website','description'];
+    use HasFactory;
+
+    public $edit_route = "governorates.edit";
+    protected $fillable = ['name', 'area', 'type', 'capital', 'population', 'code', 'time_zone', 'website', 'description'];
 
 
-    public function divisions()
+    public function divisions(): HasMany
     {
-        return $this->hasMany('App\Division','gover_id');
-    }
-    public function cities()
-    {
-        return $this->hasMany('App\City','gover_id');
-    }
-    public function units()
-    {
-        return $this->hasManyThrough('App\Unit','App\Division','gover_id','div_id');
-    }
-    public function villages()
-    {
-        return $this->hasManyThrough('App\Village','App\Division','gover_id','div_id');
-    }
-    public function hamlets()
-    {
-        return $this->hasManyThrough('App\Hamlet','App\Division','gover_id','div_id');
-    }
-    public function photos()
-    {
-        return $this->morphMany('App\Photo', 'imageable');
-    }
-    public function articles()
-    {
-        return $this->morphMany('App\Article', 'articlable');
-    }
-    public function locations()
-    {
-        return $this->morphToMany('App\Location', 'locationable');
+        return $this->hasMany(Division::class, 'gover_id');
     }
 
-    public $edit_route="governorates.edit";
+    public function cities(): HasMany
+    {
+        return $this->hasMany(City::class, 'gover_id');
+    }
+
+    public function units(): HasManyThrough
+    {
+        return $this->hasManyThrough(Unit::class, Division::class, 'gover_id', 'div_id');
+    }
+
+    public function villages(): HasManyThrough
+    {
+        return $this->hasManyThrough(Village::class, Division::class, 'gover_id', 'div_id');
+    }
+
+    public function hamlets(): HasManyThrough
+    {
+        return $this->hasManyThrough(Hamlet::class, Division::class, 'gover_id', 'div_id');
+    }
+
+    public function photos(): MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
+    }
+
+    public function articles(): MorphMany
+    {
+        return $this->morphMany(Article::class, 'articlable');
+    }
+
+    public function locations(): MorphToMany
+    {
+        return $this->morphToMany(Location::class, 'locationable');
+    }
 
 }

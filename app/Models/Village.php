@@ -3,29 +3,36 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Village extends Model
 {
-    protected $fillable=['name','area','div_id','population','description'];
-    public function uint()
+    protected $fillable = ['name', 'area', 'div_id', 'population', 'description'];
+
+    public function uint(): BelongsTo
     {
-        return $this->belongsTo('App\Uint','unit_id');
+        return $this->belongsTo(Unit::class, 'unit_id');
     }
-    public function division()
+
+    public function division(): BelongsTo
     {
-        return $this->belongsTo('App\Division','div_id');
+        return $this->belongsTo(Division::class, 'div_id');
     }
-    public function hamlets()
+
+    public function hamlets(): BelongsTo
     {
-        return $this->belongsTo('App\Hamlet','unit_id');
+        return $this->belongsTo(Hamlet::class, 'unit_id');
     }
-    public function photos()
+
+    public function photos(): MorphMany
     {
-        return $this->morphMany('App\Photo', 'imageable');
+        return $this->morphMany(Photo::class, 'imageable');
     }
-    public function articles()
+
+    public function articles(): MorphMany
     {
-        return $this->morphMany('App\Article', 'articlable');
+        return $this->morphMany(Article::class, 'articlable');
     }
 
 }

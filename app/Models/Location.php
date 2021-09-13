@@ -1,30 +1,39 @@
 <?php
+
 namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Location extends Model
 {
-    protected $fillable=['name','area','div_id','unit_id','long','lat','code','time_zone','adress_1','adress_2'];
-    public function unit()
+    protected $fillable = ['name', 'area', 'div_id', 'unit_id', 'long', 'lat', 'code', 'time_zone', 'adress_1', 'adress_2'];
+
+    public function unit(): BelongsTo
     {
-        return $this->belongsTo('App\Unit','unit_id');
+        return $this->belongsTo(Unit::class, 'unit_id');
     }
-    public function division()
+
+    public function division(): BelongsTo
     {
-        return $this->belongsTo('App\Division','div_id');
+        return $this->belongsTo(Division::class, 'div_id');
     }
-    public function centers()
+
+    public function centers(): MorphToMany
     {
-        return $this->morphedByMany('App\Center', 'locationable');
+        return $this->morphedByMany(Center::class, 'locationable');
     }
-    public function places()
+
+    public function places(): MorphToMany
     {
-        return $this->morphedByMany('App\Place', 'locationable');
+        return $this->morphedByMany(Place::class, 'locationable');
     }
-    public function articles()
+
+    public function articles(): MorphMany
     {
-        return $this->morphMany('App\Article', 'articlable');
+        return $this->morphMany(Article::class, 'articlable');
     }
 }

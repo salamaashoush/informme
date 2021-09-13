@@ -1,22 +1,28 @@
 <?php
+
 namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Hamlet extends Model
 {
-    protected $fillable=['name','area','unit_id','population','description'];
-    public function uint()
+    protected $fillable = ['name', 'area', 'unit_id', 'population', 'description'];
+
+    public function uint(): BelongsTo
     {
-        return $this->belongsTo('App\Uint','unit_id');
+        return $this->belongsTo(Unit::class, 'unit_id');
     }
-    public function photos()
+
+    public function photos(): MorphMany
     {
-        return $this->morphMany('App\Photo', 'imageable');
+        return $this->morphMany(Photo::class, 'imageable');
     }
-    public function articles()
+
+    public function articles(): MorphMany
     {
-        return $this->morphMany('App\Article', 'articlable');
+        return $this->morphMany(Article::class, 'articlable');
     }
 }
