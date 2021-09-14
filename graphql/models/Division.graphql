@@ -1,0 +1,25 @@
+type Query{
+    divisions: [Division!]! @paginate(defaultCount:10)
+    division(id: ID @eq):Division @find
+}
+
+
+type Division{
+    id: ID!
+    name: String!
+    area: String!
+    type: String!
+    capital: String!
+    gover_id: String!
+    is_district: String!
+    units: [Unit]! @hasMany
+    cities: [City]! @hasMany
+    villages: [Village]! @hasMany
+    hamlets: [Hamlet]! @hasMany
+    governorate: [Governorate]! @belongsTo
+    photos: [Photo]! @morphMany
+    articles: [Article]! @morphMany
+    population: String!
+    description: String!
+
+}
