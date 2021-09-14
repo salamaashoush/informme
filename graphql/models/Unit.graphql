@@ -1,0 +1,17 @@
+type Query{
+    units: [Unit!]! @paginate(defaultCount:10)
+    unit(id:ID @eq):Unit @find
+}
+
+type Unit{
+    id: ID!
+    name: String!
+    area: String!
+    division: [Division!]! @belongsTo
+    villages: [Village!]! @hasMany
+    hamlets: [Hamlet!]! @hasMany
+    photos: [Photo!]! @morphMany
+    articles: [Article!]! @morphMany
+    population: String!
+    description : String!
+}
