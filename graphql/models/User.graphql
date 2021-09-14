@@ -9,13 +9,13 @@ type User {
     email: String!
     created_at: DateTime!
     updated_at: DateTime!
- #   location:[Location]! @morphTo
-    articles:[Article]! @morphMany
- #   photos:[Photo]! @morphMany
- #   reviews:[Review]! @morphMany
- #   contact:[Contact]! @morphMany
- #   meta:[Meta]! @morphMany
- #   roles: [Role!]! @belongsToMany
+    location:[Location!]! @morphTo
+    articles:[Article!]! @morphMany
+    photos:[Photo!]! @morphMany
+    reviews:[Review!]! @morphMany
+    contact:[Contact!]! @morphMany
+    meta:[Meta!]! @morphMany
+    roles: [Role!]! @belongsToMany
 
 
 }

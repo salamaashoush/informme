@@ -10,9 +10,9 @@ type Article {
     body: String!
     created_at: DateTime!
     updated_at: DateTime!
-#    articlable:Articlable!@morphTo
-#    photos:[Photo]! @morphMany
-#    reviews:[Review]! @morphMany
+    articlable:Articlable!@morphTo
+    photos:[Photo]! @morphMany
+    reviews:[Review]! @morphMany
  
 }
 

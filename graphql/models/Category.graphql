@@ -9,7 +9,7 @@ type Category {
     type: String!
     created_at: DateTime!
     updated_at: DateTime!
-  # centers:[Center!]! @hasMany
-  # services:[Service!]! @hasMany
-  # places:[Place!]! @hasMany
+    centers:[Center!]! @hasMany
+    services:[Service!]! @hasMany
+    places:[Place!]! @hasMany
 }
