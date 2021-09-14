@@ -8,3 +8,5 @@ scalar DateTime
 
 #import models/User.graphql
 #import models/Location.graphql
+#import models/Division.graphql
+#import models/Unit.graphql
