@@ -1,0 +1,20 @@
+type Query{
+    name: String! 
+    desc : String! 
+    category : Category! @belongsTo
+}
+
+type Center{
+    id: ID!
+    name: String! 
+    desc : String! 
+    category : Category! @belongsTo
+    location:[Location]! @morphTo
+    articles:[Article]! @morphTo
+ #   photos:[Photo]! @morphMany
+ #   reviews:[Review]! @morphMany
+ #   contact:[Contact]! @morphMany
+ #   services:[Service!] @belongsToMany
+ #   meta:[Meta]! @morphMany
+
+}
