@@ -10,3 +10,5 @@ scalar DateTime
 #import models/Location.graphql
 #import models/Division.graphql
 #import models/Unit.graphql
+#import models/Village.graphql
+#import models/Hamlet.graphql
