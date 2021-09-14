@@ -1,0 +1,29 @@
+
+type Query {
+    articles: [Article!]! @paginate(defaultCount: 10)
+    article(id: ID @eq): Article @find
+}
+type Article {
+    id: ID!
+    type: String!
+    title: String!
+    body: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+#    articlable:Articlable!@morphTo
+#    photos:[Photo]! @morphMany
+#    reviews:[Review]! @morphMany
+ 
+}
+
+
+extend type Mutation {
+    createArticle(input: CreateArticleInput! @spread): Article! @create
+}
+
+
+input CreateArticleInput {
+    type: String!
+    title: String!
+    body: String!
+}
