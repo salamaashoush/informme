@@ -5,7 +5,7 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 scalar DateTime
     @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-
+#import models/Meta.graphql
 #import models/User.graphql
 #import models/Location.graphql
 #import models/Division.graphql
