@@ -24,3 +24,4 @@ scalar DateTime
 #import models/Meta.graphql
 #import models/Role.graphql
 #import models/Person.graphql
+#import models/Social.graphql
