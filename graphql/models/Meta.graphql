@@ -1,0 +1,15 @@
+type Query{
+    metes: [Meta!]! @paginate(defaultCount:10) 
+    meta(id:ID @eq):Meta @find
+}
+
+type Meta{
+    id: ID!
+    key:String!
+    value:String!
+    metable: Metable! @morphTo
+}
+union Metable = Center|meta
+union Metable = Place|meta
+union Metable = Service|meta
+union Metable = User|meta
