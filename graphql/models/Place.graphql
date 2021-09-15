@@ -1,0 +1,16 @@
+type Query{
+    places : [Place!]! @paginate(defaultCount:10)
+    place (id:ID @eq):Place @find
+}
+
+type Place{
+    id: ID!
+    name   :String!
+    desc   :String!
+    location:[Location!]! @morphToMany
+    articles:[Article!]! @morphMany
+    photos:[Photo!]! @morphMany
+    reviews:[Review!]! @morphMany
+    category:[Category!]! @belongsTo
+    meta:[Meta!]! @morphMany
+}
