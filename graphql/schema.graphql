@@ -21,3 +21,4 @@ scalar DateTime
 #import models/Place.graphql
 #import models/City.graphql
 #import models/Governorate.graphql
+#import models/Contact.graphql
