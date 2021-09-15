@@ -8,8 +8,8 @@ type Review{
     body: String!
     rate: String!
     user_id: String!
-    reviewable : reviewable! @morphTo
+    reviewable : Reviewable! @morphTo
     user:[User!]! @belongsTo
 }
 
-union reviewable = Article | Review
+union Reviewable = Article | Review

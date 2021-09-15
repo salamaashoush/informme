@@ -15,6 +15,7 @@ type Article {
     reviews:[Review]! @morphMany
  
 }
+union Articlable = Center | Article
 
 
 extend type Mutation {

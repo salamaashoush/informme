@@ -10,7 +10,8 @@ type Photo{
     thumb:String!
     url:String!
     tag:String!
-  #  imageable:Imageable! @morphTo
+    imageable:Imageable! @morphTo
 
 
 }
+union Imageable = Article | Photo
