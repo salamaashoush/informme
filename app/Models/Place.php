@@ -34,11 +34,11 @@ class Place extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo('App\Category', 'cat_id');
+        return $this->belongsTo(Category::class, 'cat_id');
     }
 
     public function meta(): MorphMany
     {
-        return $this->morphMany('App\Meta', 'metable');
+        return $this->morphMany(Meta::class, 'metable');
     }
 }
