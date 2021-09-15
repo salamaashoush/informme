@@ -14,3 +14,4 @@ scalar DateTime
 #import models/Hamlet.graphql
 #import models/Article.graphql
 #import models/photo.graphql
+#import models/Review.graphql
