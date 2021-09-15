@@ -18,3 +18,4 @@ scalar DateTime
 #import models/Center.graphql
 #import models/Category.graphql
 #import models/Service.graphql
+#import models/Place.graphql
