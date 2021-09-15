@@ -1,0 +1,15 @@
+type Query{
+    reviews : [Review!]! @paginate(defaultCount : 10 )
+    review (id:ID @eq):Review @find
+}
+
+type Review{
+    id: ID!
+    body: String!
+    rate: String!
+    user_id: String!
+    reviewable : reviewable! @morphTo
+    user:[User!]! @belongsTo
+}
+
+union reviewable = Article | Review
