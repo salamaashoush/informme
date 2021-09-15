@@ -13,3 +13,8 @@ type Review{
 }
 
 union Reviewable = Article | Review
+union Reviewable = Center | Review
+union Reviewable = Person | Review
+union Reviewable = Place | Review
+union Reviewable = Service | Review
+union Reviewable = User | Review
