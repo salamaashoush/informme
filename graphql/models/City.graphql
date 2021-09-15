@@ -1,0 +1,24 @@
+type Query{
+    cities:[City!]! @paginate(defaultCount:10)
+    city(id:ID @eq):City @find
+}
+
+type City{
+    id: ID!
+    name : String!
+    area : String!
+    gover_id : String!
+    is_division : String!
+    districts : String!
+    divisions : String!
+    units : String!
+    population : String!
+    p_density_rate : String!
+    creation_date : String!
+    national_day : String!
+    description : String!
+    division:[Division!]! @belongsTo
+    governorate:[Governorate!]! @belongsTo
+    photos:[Photo!]! @morphMany
+    articles:[Article!]! @morphMany
+}
