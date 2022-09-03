@@ -1,0 +1,10 @@
+extend type Query{
+    social (id : ID @eq):Social @find
+}
+
+type Social{
+    id: ID!
+    provider:String!
+    social_id:String!
+    user:User! @belongsTo
+}

@@ -1,0 +1,18 @@
+extend type Query{
+    locations: [Location!]! @paginate(defaultCount: 10)
+    location(id: ID @eq): Location @find
+
+}
+
+type Location{
+    name : String!
+    area : String!
+    long : String!
+    lat : String!
+    code : String!
+    time_zone : String!
+    adress_1 : String!
+    adress_2 : String!
+    division : Division! @belongsTo
+    unit : Unit! @belongsTo
+}

@@ -1,0 +1,9 @@
+extend type Query{
+    roles:[Role!]! @paginate(defaultCount:10)
+    role(id:ID @eq):Role @find
+}
+
+type Role{
+    id: ID!
+    name:String
+}

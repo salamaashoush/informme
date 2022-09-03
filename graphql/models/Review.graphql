@@ -1,0 +1,25 @@
+extend type Query{
+    reviews : [Review!]! @paginate(defaultCount : 10 )
+    review (id:ID @eq):Review @find
+}
+
+type Review{
+    id: ID!
+    body: String!
+    rate: String!
+    user_id: String!
+    reviewable : Reviewable! @morphTo
+    user:User! @belongsTo
+}
+
+union Reviewable = Center
+    | Place
+    | Service
+    | Governorate
+    | City
+    | Division
+    | Hamlet
+    | Location
+    | Person
+    | Village
+    | Unit

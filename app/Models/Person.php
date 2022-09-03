@@ -29,7 +29,7 @@ class Person extends Model
 
     public function reviews(): MorphMany
     {
-        return $this->morphMany(Photo::class, 'reviewable');
+        return $this->morphMany(Review::class, 'reviewable');
     }
 
     public function contact(): MorphMany

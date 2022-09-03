@@ -3,17 +3,29 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime
-    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-type Query {
-    users: [User!]! @paginate(defaultCount: 10)
-    user(id: ID @eq): User @find
-}
+#import models/User.graphql
+#import models/Location.graphql
+#import models/Division.graphql
+#import models/Unit.graphql
+#import models/Village.graphql
+#import models/Hamlet.graphql
+#import models/Article.graphql
+#import models/Photo.graphql
+#import models/Review.graphql
+#import models/Center.graphql
+#import models/Category.graphql
+#import models/Service.graphql
+#import models/Place.graphql
+#import models/City.graphql
+#import models/Governorate.graphql
+#import models/Contact.graphql
+#import models/Meta.graphql
+#import models/Role.graphql
+#import models/Person.graphql
+#import models/Social.graphql
 
-type User {
-    id: ID!
-    name: String!
-    email: String!
-    created_at: DateTime!
-    updated_at: DateTime!
-}
+type Mutation
+
+type Query

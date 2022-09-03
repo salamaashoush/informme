@@ -1,0 +1,29 @@
+extend type Query{
+    photos : [Photo!]! @paginate(defaultCount:10)
+    photo (id:ID @eq):Photo @find
+
+}
+
+type Photo{
+    id: ID!
+    name:String!
+    thumb:String!
+    url:String!
+    tag:String!
+    imageable: Imageable! @morphTo
+}
+union Imageable = Center
+    | Place
+    | Service
+    | User
+    | Governorate
+    | Article
+    | City
+    | Contact
+    | Division
+    | Hamlet
+    | Location
+    | Person
+    | Village
+    | Unit
+    | Review

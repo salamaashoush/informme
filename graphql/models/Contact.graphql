@@ -1,0 +1,24 @@
+extend type Query{
+    contacts:[Contact!]! @paginate(defaultCount:10)
+    contact(id:ID @eq):Contact @find
+}
+
+type Contact{
+    id: ID!
+    phone:String!
+    mobile:String!
+    fax:String!
+    email:String!
+    website:String!
+    contactable:Contactable! @morphMany
+}
+union Contactable = Center
+    | Place
+    | Governorate
+    | City
+    | Division
+    | Hamlet
+    | Location
+    | Person
+    | Village
+    | Unit

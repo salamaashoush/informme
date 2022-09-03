@@ -45,7 +45,7 @@ class User extends Authenticatable
     ];
 
 
-    public function location(): MorphToMany
+    public function locations(): MorphToMany
     {
         return $this->morphToMany(Location::class, 'locationable');
     }

@@ -1,0 +1,21 @@
+extend type Query{
+    services:[Service!]! @paginate(defaultCount:10)
+    service(id:ID @eq):Service @find
+}
+
+type Service{
+    id: ID!
+    name: String!
+    desc: String!
+    parent_id: String!
+    lft: String!
+    rgt: String!
+    depth: String!
+    category: Category! @belongsTo
+    photos:[Photo]! @morphMany
+    reviews:[Review]! @morphMany
+    center:[Center]! @belongsTo
+    articles:[Article]! @morphMany
+    centers:[Center]! @belongsToMany
+    meta:[Meta]! @morphMany
+}
