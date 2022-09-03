@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     villages : [Village!]! @paginate(defaultCount:10)
     village(id:ID @eq):Village @find
 }
@@ -7,11 +7,12 @@ type Village{
     id: ID!
     name : String!
     area : String!
-    division : [Division!]! @belongsTo
-    uint : [Unit!]! @belongsTo
-    hamlets : [Hamlet!]! @belongsTo
-    photos : [Photo!]! @morphMany
-    articles : [Article!]! @morphMany
+    location: Location @morphTo
+    division : Division! @belongsTo
+    uint : Unit! @belongsTo
+    hamlets : Hamlet! @belongsTo
+    photos : [Photo]! @morphMany
+    articles : [Article]! @morphMany
     population : String!
     description : String!
 }

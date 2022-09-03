@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     photos : [Photo!]! @paginate(defaultCount:10)
     photo (id:ID @eq):Photo @find
 
@@ -10,8 +10,20 @@ type Photo{
     thumb:String!
     url:String!
     tag:String!
-    imageable:Imageable! @morphTo
-
-
+    imageable: Imageable! @morphTo
 }
-union Imageable = Article | Photo
+union Imageable = Center
+    | Place
+    | Service
+    | User
+    | Governorate
+    | Article
+    | City
+    | Contact
+    | Division
+    | Hamlet
+    | Location
+    | Person
+    | Village
+    | Unit
+    | Review

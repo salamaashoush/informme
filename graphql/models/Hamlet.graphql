@@ -1,5 +1,5 @@
-type Query{
-    hamlets : [Hamlet!]! @paginate(defaultCount:10) 
+extend type Query{
+    hamlets : [Hamlet!]! @paginate(defaultCount:10)
     hamlet(id:ID @eq):Hamlet @find
 
 }

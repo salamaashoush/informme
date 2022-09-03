@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     governorates:[Governorate!]! @paginate(defaultCount:10)
     governorate (id:ID @eq):Governorate @find
 }
@@ -14,10 +14,9 @@ type Governorate{
     time_zone:String!
     website:String!
     description : String!
-    divisions:[Division!]! @hasMany
-    cities:[City!]! @hasMany
-    photos:[Photo!]! @morphMany
-    articles:[Article!]! @morphMany
-    locations:[Location!]! @morphToMany
-
+    divisions:[Division]! @hasMany
+    cities:[City]! @hasMany
+    photos:[Photo]! @morphMany
+    articles:[Article]! @morphMany
+    locations:[Location]! @morphToMany
 }

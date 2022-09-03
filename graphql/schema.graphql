@@ -3,7 +3,7 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime
-    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
 #import models/User.graphql
 #import models/Location.graphql
@@ -12,7 +12,7 @@ scalar DateTime
 #import models/Village.graphql
 #import models/Hamlet.graphql
 #import models/Article.graphql
-#import models/photo.graphql
+#import models/Photo.graphql
 #import models/Review.graphql
 #import models/Center.graphql
 #import models/Category.graphql
@@ -25,3 +25,7 @@ scalar DateTime
 #import models/Role.graphql
 #import models/Person.graphql
 #import models/Social.graphql
+
+type Mutation
+
+type Query

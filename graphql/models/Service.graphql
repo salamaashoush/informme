@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     services:[Service!]! @paginate(defaultCount:10)
     service(id:ID @eq):Service @find
 }
@@ -11,12 +11,11 @@ type Service{
     lft: String!
     rgt: String!
     depth: String!
-    category: [Category!]! @belongsTo
-    photos:[Photo!]! @morphMany
-    reviews:[Review!]! @morphMany
-    center:[Center!]! @belongsTo
-    articles:[Article!]! @morphMany
-    centers:[Center!]! @belongsToMany
-    category:[Category!]! @belongsTo
-    meta:[Meta!]! @morphMany
+    category: Category! @belongsTo
+    photos:[Photo]! @morphMany
+    reviews:[Review]! @morphMany
+    center:[Center]! @belongsTo
+    articles:[Article]! @morphMany
+    centers:[Center]! @belongsToMany
+    meta:[Meta]! @morphMany
 }

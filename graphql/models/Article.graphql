@@ -1,5 +1,4 @@
-
-type Query {
+extend type Query {
     articles: [Article!]! @paginate(defaultCount: 10)
     article(id: ID @eq): Article @find
 }
@@ -10,13 +9,24 @@ type Article {
     body: String!
     created_at: DateTime!
     updated_at: DateTime!
-    articlable:Articlable!@morphTo
+    articlable: Articlable!@morphTo
     photos:[Photo]! @morphMany
     reviews:[Review]! @morphMany
- 
-}
-union Articlable = Center | Article
 
+}
+union Articlable = Center
+    | Place
+    | Service
+    | User
+    | Governorate
+    | City
+    | Contact
+    | Division
+    | Hamlet
+    | Location
+    | Person
+    | Village
+    | Unit
 
 extend type Mutation {
     createArticle(input: CreateArticleInput! @spread): Article! @create

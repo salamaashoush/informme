@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     cities:[City!]! @paginate(defaultCount:10)
     city(id:ID @eq):City @find
 }

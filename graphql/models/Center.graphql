@@ -1,12 +1,12 @@
-type Query{
+extend type Query{
     centers: [Center!]! @paginate(defaultCount: 10)
     center(id: ID @eq): Center @find
 }
 
 type Center{
     id: ID!
-    name: String! 
-    desc : String! 
+    name: String!
+    desc : String!
     category : Category! @belongsTo
     location:[Location!]! @morphTo
     articles:[Article!]! @morphTo
@@ -15,5 +15,4 @@ type Center{
     contact:[Contact!]! @morphMany
     services:[Service!]! @belongsToMany
     meta:[Meta!]! @morphMany
-
 }

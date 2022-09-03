@@ -1,4 +1,4 @@
-type Query {
+extend type Query {
     categories: [Category!]! @paginate(defaultCount: 10)
     category(id: ID @eq): Category @find
 }

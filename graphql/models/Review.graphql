@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     reviews : [Review!]! @paginate(defaultCount : 10 )
     review (id:ID @eq):Review @find
 }
@@ -9,12 +9,17 @@ type Review{
     rate: String!
     user_id: String!
     reviewable : Reviewable! @morphTo
-    user:[User!]! @belongsTo
+    user:User! @belongsTo
 }
 
-union Reviewable = Article | Review
-union Reviewable = Center | Review
-union Reviewable = Person | Review
-union Reviewable = Place | Review
-union Reviewable = Service | Review
-union Reviewable = User | Review
+union Reviewable = Center
+    | Place
+    | Service
+    | Governorate
+    | City
+    | Division
+    | Hamlet
+    | Location
+    | Person
+    | Village
+    | Unit

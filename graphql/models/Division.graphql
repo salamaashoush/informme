@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     divisions: [Division!]! @paginate(defaultCount:10)
     division(id: ID @eq):Division @find
 }

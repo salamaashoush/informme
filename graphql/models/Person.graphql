@@ -1,4 +1,4 @@
-type Query{
+extend type Query{
     persons:[Person!]! @paginate(defaultCount:10)
     person(id:ID @eq):Person @find
 }
@@ -9,9 +9,9 @@ type Person{
     job:String!
     desciption:String!
     is_historical:String!
-    location:[Location!]!@morphToMany
-    articles:[Article!]!@morphMany
-    photos:[Photo!]!@morphMany
-    reviews:[Review!]!@morphMany
-    contact:[Contact!]!@morphMany
+    locations:[Location]!@morphToMany
+    articles:[Article]!@morphMany
+    photos:[Photo]!@morphMany
+    reviews:[Review]!@morphMany
+    contacts:[Contact]!@morphMany
 }
